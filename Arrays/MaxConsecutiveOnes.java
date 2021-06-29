@@ -11,3 +11,26 @@ Constraints:
 
 1 <= nums.length <= 105
 nums[i] is either 0 or 1. */
+
+class Solution {
+    public int findMaxConsecutiveOnes(int[] nums) {
+        int count=0;
+        int maxcount=0;
+        for(int i: nums){
+            if(i==1){
+                count++;
+            }
+            else{
+                maxcount=Math.max(count,maxcount);
+                count=0;
+            }
+            
+           /* if(mainsum<count){
+                mainsum=count;
+                
+            }*/
+        }
+        maxcount=Math.max(count,maxcount);
+        return maxcount;
+    }
+}
