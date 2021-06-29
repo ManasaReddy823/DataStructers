@@ -12,7 +12,7 @@ Constraints:
 1 <= nums.length <= 105
 nums[i] is either 0 or 1. */
 
-class Solution {
+public class MaxConsecutiveOnes {
     public int findMaxConsecutiveOnes(int[] nums) {
         int count=0;
         int maxcount=0;
