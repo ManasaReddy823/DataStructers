@@ -1,0 +1,84 @@
+/* 
+A school is trying to take an annual photo of all the students. The students are asked to stand in a single file line in non-decreasing order by height. Let this ordering be represented by the integer array expected where expected[i] is the expected height of the ith student in line.
+
+You are given an integer array heights representing the current order that the students are standing in. Each heights[i] is the height of the ith student in line (0-indexed).
+
+Return the number of indices where heights[i] != expected[i].
+
+ 
+
+Example 1:
+
+Input: heights = [1,1,4,2,1,3]
+Output: 3
+Explanation: 
+heights:  [1,1,4,2,1,3]
+expected: [1,1,1,2,3,4]
+Indices 2, 4, and 5 do not match.
+Example 2:
+
+Input: heights = [5,1,2,3,4]
+Output: 5
+Explanation:
+heights:  [5,1,2,3,4]
+expected: [1,2,3,4,5]
+All indices do not match.
+Example 3:
+
+Input: heights = [1,2,3,4,5]
+Output: 0
+Explanation:
+heights:  [1,2,3,4,5]
+expected: [1,2,3,4,5]
+All indices match.
+ 
+
+Constraints:
+
+1 <= heights.length <= 100
+1 <= heights[i] <= 100 */
+
+/* Algorithm
+
+1) Iterate through the current Array and create a new expected_heights array.
+2) Compare each and every element of heights and expected_heights and increment the count by 1, if the elements are not matching.
+
+*/
+
+class Solution {
+    public int heightChecker(int[] heights) {
+        
+        int[] expected_heights= new int[heights.length];
+        for(int i=0;i<heights.length;i++){
+	        expected_heights[i]=heights[i];
+	    }
+        
+        int temp=0;
+        int temp1=0;
+        
+        int i;
+        for(i=0;i<expected_heights.length;i++){
+            temp=i;
+            for(int j=i+1;j<expected_heights.length;j++){
+                if(expected_heights[temp]>expected_heights[j]){
+                temp=j;
+            }
+            }
+                
+                temp1=expected_heights[i];
+                expected_heights[i]=expected_heights[temp];
+                expected_heights[temp]=temp1;
+                
+                }
+        temp1=0;
+        for(i=0;i<expected_heights.length;i++){
+            if(heights[i] != expected_heights[i]){
+                temp1++;
+                
+            }
+        }
+        
+        return temp1;
+        
+    }
+}
